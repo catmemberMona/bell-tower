@@ -24,15 +24,6 @@ chrome.runtime.onInstalled.addListener(function() {    // add an action here
 
 });
 
-// const getNextBell = () => {
-//   const currentDate = new Date();
-//   const currentHour = currentDate.getHours();
-//   const nextNearestHour = ((currentHour - 12 + 1) < 1) ? currentHour + 1 : currentHour - 12 + 1; // nearest time it should ring in 12hourTime
-
-//   return nextBell
-// }
-
-// getNextBell()
 
 
 
