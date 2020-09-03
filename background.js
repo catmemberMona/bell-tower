@@ -1,12 +1,8 @@
 //always be running while your extension is turned on 
 //is useful for listening to different events, such as keyboard presses, or for navigating to different pages
-const bellChimes = () => {
 
-}
-
-
-const ringBell = (hour) => {
-  let audio = new Audio(chrome.runtime.getURL("./clock-bell-twelve.wav")); // default 
+function ringBell(hour) {
+  let audio = new Audio(chrome.runtime.getURL("./clock-bell-twelve.wav")); // default 12 chimes
   switch (hour % 12) {
     case 1:
       audio = new Audio(chrome.runtime.getURL("./clock-bell-one.wav"));
@@ -41,29 +37,38 @@ const ringBell = (hour) => {
     case 11:
       audio = new Audio(chrome.runtime.getURL("./clock-bell-eleven.wav"));
       break;``
+    default:
+      break;
   
   }
   audio.play();
 }
 
 
-const firstBellTime = () => {
-  const now = new Date();
-  const nextNearestHour = now.getHours() + 1;
-  const timeOfFirstBell = new Date()
-  timeOfFirstBell.setHours(nextNearestHour, 0,0); //timeOfFirstBell
+// const firstBellTime = () => {
+//   const now = new Date();
+//   const nextNearestHour = now.getHours() + 1;
+//   const timeOfFirstBell = new Date();
+//   timeOfFirstBell.setHours(nextNearestHour); //timeOfFirstBell
+//   // timeOfFirstBell.setHours(nextNearestHour, 15); // testing only
 
-  return timeOfFirstBell.getTime() - now.getTime(); // difference in ms from now to first Bell
-}
+//   // return timeOfFirstBell.getTime() - now.getTime(); // difference in ms from now to first Bell
+//   return 2000; // testing only
+// }
 
 chrome.runtime.onInstalled.addListener(function() {    // add an action here
 
-  const firstBell = firstBellTime();
+  // const firstBell = firstBellTime();
+  const hourInMs = 1000 * 60 * 60;
+  const firstBell = 2000; // testing only
+  // const hourInMs = 1000 * 30; // testing only
+  
   setTimeout(function(){
     const now = new Date();
-    const hour = now.getHours();
+    const hour = now.getHours() + 1;
+
     ringBell(hour);
-    setInterval(ringBell, 60 * 60 * 1000); // every hour
+    setInterval(ringBell, hourInMs, hour); // every hour
   }, firstBell);
 
 });

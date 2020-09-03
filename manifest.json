@@ -1,17 +1,16 @@
 {    
 	"name": "Clock Tower",    
 	"version": "1.0",    
-	"description": "Time always flow forward and the speed of time does not change for individuals. Install Clock Tower and let it alert you to the changing of time. Every hour, the tower will ring corresponding to the current time. WARNING! There is not a stop button. Use this extention with caution.",    
+	"description": "Time always flows forward and the speed of time does not change for individuals. Install Clock Tower and let it alert you to the changing of time. Every hour, the tower will ring corresponding to the current time. WARNING! There is not a stop button. Use this extension with caution.",    
 	"manifest_version": 2,
 	"author": "Mona",
 	"background": {
 		"scripts": [            
 			"background.js"      
 		],        
-		"persistent": false
+		"persistent": true
 	},
-	"browser_action": {        
-		"default_popup": "popup.html",         
+	"browser_action": {                
 		"default_icon": "tower-icon.png"
 	}
 }
